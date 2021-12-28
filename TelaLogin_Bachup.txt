@@ -1,0 +1,119 @@
+package br.edu.iftm.views;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+
+public class TelaLogin extends JPanel{
+
+    private final Color COR_FUNDO = Color.decode("#f9f9f9");
+    private JLabel labelContaRiot;
+    private JLabel imagemFundo;
+    private JTextField campoUsuario;
+    private JTextField campoSenha;
+    private JButton botaoLogar;
+    private JLabel imagemLogo;
+
+    public TelaLogin(){
+        this.setBackground(COR_FUNDO);
+        this.setLayout(null);
+        this.iniciarInterface();
+
+    }
+
+    public void iniciarInterface(){
+
+        this.imagemLogo = this.criarImagem("logo.jpg", new Rectangle(150,30,44,47));
+        //this.imagemLogo = new JLabel("");
+        /*ImageIcon logo = new ImageIcon(this.getClass().getResource("imagens/logo.jpg"));
+        this.imagemLogo.setIcon(logo);
+        this.imagemLogo.setBounds(150,30,44,47);*/
+
+        labelContaRiot = new JLabel("Fazer login:");
+        labelContaRiot.setBounds(118, 125, 150, 30);
+        labelContaRiot.setFont(new Font("Tahoma", Font.BOLD, 20));
+        labelContaRiot.setForeground(Color.decode("#111111"));
+        
+
+        this.imagemFundo = this.criarImagem("fundo.jpg", new Rectangle(340, 0, 940, 700));
+
+        //this.imagemFundo = new JLabel("");
+        /*ImageIcon fundo = new ImageIcon(this.getClass().getResource("imagens/fundo.jpg"));
+        this.imagemFundo.setIcon(fundo);
+        this.imagemFundo.setBounds(340, 0, 940, 700);*/
+
+        this.campoUsuario = new JTextField();
+        this.campoUsuario = this.alterarEstiloCampo("NOME DE USUARIO", 190);
+        /*this.campoUsuario.setBounds(45, 190, 260, 50);
+        this.campoUsuario.setBackground(Color.decode("#ededed"));
+        //this.campoUsuario.setBorder(new EmptyBorder(0,0,0,0));
+        this.campoUsuario.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(), BorderFactory.createEmptyBorder(15,15,15,15)));
+        this.campoUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
+        this.campoUsuario.setForeground(Color.decode("#999999"));*/
+
+        this.campoSenha = new JTextField();
+        this.campoSenha = this.alterarEstiloCampo("SENHA", 250);
+        /*this.campoSenha.setBounds(45, 250, 260, 50);
+        this.campoSenha.setBackground(Color.decode("#ededed"));
+        this.campoSenha.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(), BorderFactory.createEmptyBorder(15,15,15,15)));
+        this.campoSenha.setFont(new Font("Tahoma", Font.BOLD, 12));
+        this.campoSenha.setForeground(Color.decode("#999999"));*/
+
+        this.botaoLogar = new JButton("Entrar");
+        this.botaoLogar.setBounds(101, 435, 113, 45);
+        this.botaoLogar.setBackground(COR_FUNDO);
+
+        //System.out.println(this.getClass().getResource("imagens/fundo.jpg"));
+
+        this.add(labelContaRiot); // A classe já é um painel, pode adicionar direto 
+        // É o mesmo efeito que adicionar da forma como abaixo 
+        // JPanel painel = new JPanel();
+        // painel.add(labelContaRiot);
+
+        this.add(imagemLogo);
+        this.add(imagemFundo);
+        this.add(campoUsuario);
+        this.add(campoSenha);
+        this.add(botaoLogar);
+
+    }
+
+    private JLabel criarImagem(String nomeImagem, Rectangle bounds){
+        JLabel labelImagem = new JLabel("");
+        ImageIcon imagem = new ImageIcon(this.getClass().getResource("imagens/"+nomeImagem));
+        labelImagem.setIcon(imagem);
+        labelImagem.setBounds(bounds);
+        return labelImagem;
+
+    }
+
+    private JTextField alterarEstiloCampo(String placeHolder, int posicaoY){
+        JTextField campo = new JTextField(placeHolder);
+        // Atualiza a mensagem do campo
+        campo.setText(placeHolder);
+        // Posição na tela
+        campo.setBounds(45, posicaoY, 260, 50);
+        // Cor do fundo
+        campo.setBackground(Color.decode("#ededed"));
+        // Define a borda e o espaçamento interno
+        campo.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(), BorderFactory.createEmptyBorder(15,15,15,15)));setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(), BorderFactory.createEmptyBorder(15,15,15,15)));
+        // Estilo da fonte = negrito e tamanho 12
+        campo.setFont(new Font("Tahoma", Font.BOLD, 12));
+        // Cor da fonte
+        campo.setForeground(Color.decode("#999999"));
+
+        return campo;
+    }
+
+    
+}
